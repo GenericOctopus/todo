@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Task to List</ion-title>
+    <ion-icon name="close" slot="end" size="large" class="ion-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item>
+      <ion-textarea placeholder="Write Task Here"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select>
+
+        <ion-select-option value="low">Low</ion-select-option>
+        <ion-select-option value="medium">Medium</ion-select-option>
+        <ion-select-option value="high">High</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item (click)="showPicker = !showPicker">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Due Date</ion-label>
+      <ion-text slot="end"> {{dateValue}}</ion-text>
+    </ion-item>
+    <ion-datetime presentation="date" 
+    #datetime
+    *ngIf="showPicker" 
+    [value]="dateValue" 
+    size="cover"
+    (ionChange)="dateChanged(datetime.value)"></ion-datetime>
+
+
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label>Category</ion-label>
+    </ion-item>
+
+    <ion-button class="ion-margin" expand="block">Add Task</ion-button>
+
+  </ion-card>
+
+
+</ion-content>
